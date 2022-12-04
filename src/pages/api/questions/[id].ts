@@ -2,21 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import questions from "../questionsStorage";
 
-type QuestionProps = {
-  id: number;
-  text: string;
-  answers: {
-    value: string;
-    correct: boolean;
-    revealed: boolean;
-  }[];
-  correct: boolean;
-};
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<QuestionProps>,
-) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const selectedId = req.query.id && +req.query.id;
 
   const filteredQuestion = questions.filter(
@@ -27,6 +13,6 @@ export default function handler(
     const selectedQuestion = filteredQuestion[0];
     res.status(200).json(selectedQuestion.toObject());
   } else {
-    res.status(204).send();
+    res.status(204).send({});
   }
 }
