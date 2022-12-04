@@ -10,7 +10,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   );
 
   if (filteredQuestion.length === 1) {
-    const selectedQuestion = filteredQuestion[0];
+    const selectedQuestion = filteredQuestion[0].shuffleAnswers();
     res.status(200).json(selectedQuestion.toObject());
   } else {
     res.status(204).send({});
