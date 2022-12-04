@@ -12,7 +12,7 @@ export default class AnswerModel {
   static correct(value: string) {
     return new AnswerModel(value, true);
   }
-  
+
   static incorrect(value: string) {
     return new AnswerModel(value, false);
   }
@@ -27,5 +27,13 @@ export default class AnswerModel {
 
   get revealed() {
     return this.#revealed;
+  }
+
+  toObject() {
+    return {
+      value: this.#value,
+      correct: this.#correct,
+      revealed: this.#revealed,
+    };
   }
 }
