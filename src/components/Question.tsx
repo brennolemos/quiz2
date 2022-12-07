@@ -1,5 +1,6 @@
 import QuestionModel from "../model/Question";
 import styles from "../styles/Question.module.css";
+import Statement from "./Statement";
 
 interface QuestionProps {
   value: QuestionModel;
@@ -10,7 +11,7 @@ const Question = (props: QuestionProps) => {
 
   return (
     <div className={styles.question}>
-      <h1>Question</h1>
+      <Statement text={question.text}/>
     </div>
   );
 };

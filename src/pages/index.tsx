@@ -11,5 +11,16 @@ export default function Home() {
     AnswerModel.correct("Black"),
   ]);
 
-  return <Question value={testQuestion} />;
+  return (
+    <div
+      style={{
+        display: "flex",
+        height: "100vh",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Question value={testQuestion} />
+    </div>
+  );
 }
