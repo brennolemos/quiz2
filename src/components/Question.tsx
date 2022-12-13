@@ -1,5 +1,6 @@
 import QuestionModel from "../model/Question";
 import styles from "../styles/Question.module.css";
+import Answer from "./Answer";
 import Statement from "./Statement";
 
 interface QuestionProps {
@@ -9,9 +10,18 @@ interface QuestionProps {
 const Question = (props: QuestionProps) => {
   const question = props.value;
 
+  const renderAnswers = () => {
+    return question.answers.map((answer, i) => {
+      return (
+        <Answer key={i} value={answer} index={i} option="A" color="#f2c866" />
+      );
+    });
+  };
+
   return (
     <div className={styles.question}>
-      <Statement text={question.text}/>
+      <Statement text={question.text} />
+      {renderAnswers()}
     </div>
   );
 };
