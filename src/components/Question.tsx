@@ -3,6 +3,13 @@ import styles from "../styles/Question.module.css";
 import Answer from "./Answer";
 import Statement from "./Statement";
 
+const options = [
+  { value: "A", color: "#f2c866" },
+  { value: "B", color: "#f266ba" },
+  { value: "C", color: "#85d4f2" },
+  { value: "D", color: "#bce596" },
+];
+
 interface QuestionProps {
   value: QuestionModel;
 }
@@ -17,8 +24,8 @@ const Question = (props: QuestionProps) => {
           key={i}
           value={answer}
           index={i}
-          option="A"
-          optionColorBg="#f2c866"
+          option={options[i].value}
+          optionColorBg={options[i].color}
         />
       );
     });
