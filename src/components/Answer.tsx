@@ -6,13 +6,14 @@ interface AnswerProps {
   index: number;
   option: string;
   optionColorBg: string;
+  onAnswer: (index: number) => void;
 }
 
 const Answer = (props: AnswerProps) => {
   const answer = props.value;
 
   return (
-    <div className={styles.answer}>
+    <div className={styles.answer} onClick={() => props.onAnswer(props.index)}>
       <div className={styles["answer__content"]}>
         <div className={styles.front}>
           <div

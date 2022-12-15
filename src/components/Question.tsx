@@ -12,6 +12,7 @@ const options = [
 
 interface QuestionProps {
   value: QuestionModel;
+  onAnswer: (index: number) => void;
 }
 
 const Question = (props: QuestionProps) => {
@@ -26,6 +27,7 @@ const Question = (props: QuestionProps) => {
           index={i}
           option={options[i].value}
           optionColorBg={options[i].color}
+          onAnswer={props.onAnswer}
         />
       );
     });

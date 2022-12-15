@@ -11,6 +11,10 @@ export default function Home() {
     AnswerModel.correct("Black"),
   ]);
 
+  const onAnswer = (index: number) => {
+    console.log(index);
+  };
+
   return (
     <div
       style={{
@@ -20,7 +24,7 @@ export default function Home() {
         alignItems: "center",
       }}
     >
-      <Question value={testQuestion} />
+      <Question value={testQuestion} onAnswer={onAnswer} />
     </div>
   );
 }
