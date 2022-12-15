@@ -13,7 +13,13 @@ const Question = (props: QuestionProps) => {
   const renderAnswers = () => {
     return question.answers.map((answer, i) => {
       return (
-        <Answer key={i} value={answer} index={i} option="A" color="#f2c866" />
+        <Answer
+          key={i}
+          value={answer}
+          index={i}
+          option="A"
+          optionColorBg="#f2c866"
+        />
       );
     });
   };
