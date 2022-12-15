@@ -1,17 +1,21 @@
+import { useState } from "react";
 import AnswerModel from "../model/Answer";
 import QuestionModel from "../model/Question";
 
 import Question from "../components/Question";
 
+const mockQuestion = new QuestionModel(1, "Melhor cor?", [
+  AnswerModel.incorrect("Green"),
+  AnswerModel.incorrect("Red"),
+  AnswerModel.incorrect("Blue"),
+  AnswerModel.correct("Black"),
+]);
+
 export default function Home() {
-  const testQuestion = new QuestionModel(1, "Melhor cor?", [
-    AnswerModel.incorrect("Green"),
-    AnswerModel.incorrect("Red"),
-    AnswerModel.incorrect("Blue"),
-    AnswerModel.correct("Black"),
-  ]);
+  const [question, setQuestion] = useState(mockQuestion);
 
   const onAnswer = (index: number) => {
+    setQuestion(question.answerWith(index));
     console.log(index);
   };
 
@@ -24,7 +28,7 @@ export default function Home() {
         alignItems: "center",
       }}
     >
-      <Question value={testQuestion} onAnswer={onAnswer} />
+      <Question value={question} onAnswer={onAnswer} />
     </div>
   );
 }
