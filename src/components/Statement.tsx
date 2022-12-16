@@ -1,4 +1,4 @@
-import styles from "../styles/Statement.module.css";
+import styles from "styles/Statement.module.css";
 
 interface StatementProps {
   text: string;

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import AnswerModel from "../model/Answer";
-import QuestionModel from "../model/Question";
 
-import Question from "../components/Question";
+import AnswerModel from "model/Answer";
+import QuestionModel from "model/Question";
+import Question from "components/Question";
 
 const mockQuestion = new QuestionModel(1, "Melhor cor?", [
   AnswerModel.incorrect("Green"),

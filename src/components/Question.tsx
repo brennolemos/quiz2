@@ -1,7 +1,9 @@
-import QuestionModel from "../model/Question";
-import styles from "../styles/Question.module.css";
+import QuestionModel from "model/Question";
+import styles from "styles/Question.module.css";
+
 import Answer from "./Answer";
 import Statement from "./Statement";
+
 
 const options = [
   { value: "A", color: "#f2c866" },
