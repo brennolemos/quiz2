@@ -15,7 +15,7 @@ const Answer = (props: AnswerProps) => {
   return (
     <div className={styles.answer} onClick={() => props.onAnswer(props.index)}>
       <div className={styles["answer__content"]}>
-        <div className={styles.front}>
+        {/* <div className={styles.front}>
           <div
             className={styles.option}
             style={{ backgroundColor: props.optionColorBg }}
@@ -23,8 +23,20 @@ const Answer = (props: AnswerProps) => {
             {props.option}
           </div>
           <div className={styles.value}>{answer.value}</div>
+        </div> */}
+        <div className={styles.back}>
+          {answer.correct ? (
+            <div className={styles.correct}>
+              <div>The correct answer is...</div>
+              <div className={styles.value}>{answer.value}</div>
+            </div>
+          ) : (
+            <div className={styles.incorrect}>
+              <div>The answer selected is incorrect...</div>
+              <div className={styles.value}>{answer.value}</div>
+            </div>
+          )}
         </div>
-        <div className={styles.back}></div>
       </div>
     </div>
   );
