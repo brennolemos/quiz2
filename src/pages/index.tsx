@@ -16,7 +16,10 @@ export default function Home() {
 
   const onAnswer = (index: number) => {
     setQuestion(question.answerWith(index));
-    console.log(index);
+  };
+
+  const finishedTime = () => {
+    setQuestion(question.answerWith(-1));
   };
 
   return (
@@ -28,7 +31,7 @@ export default function Home() {
         alignItems: "center",
       }}
     >
-      <Question value={question} onAnswer={onAnswer} />
+      <Question value={question} onAnswer={onAnswer} finishedTime={finishedTime} />
     </div>
   );
 }

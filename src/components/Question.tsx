@@ -3,7 +3,7 @@ import styles from "styles/Question.module.css";
 
 import Answer from "./Answer";
 import Statement from "./Statement";
-
+import Timer from "./Timer";
 
 const options = [
   { value: "A", color: "#f2c866" },
@@ -15,6 +15,7 @@ const options = [
 interface QuestionProps {
   value: QuestionModel;
   onAnswer: (index: number) => void;
+  finishedTime: () => void;
 }
 
 const Question = (props: QuestionProps) => {
@@ -38,6 +39,7 @@ const Question = (props: QuestionProps) => {
   return (
     <div className={styles.question}>
       <Statement text={question.text} />
+      <Timer duration={10} finishedTime={props.finishedTime} />
       {renderAnswers()}
     </div>
   );
