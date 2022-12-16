@@ -28,6 +28,27 @@
   color: #000;
 }
 
+.back > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.correct {
+  background-color: #2baa6d;
+}
+
+.incorrect {
+  background-color: #e44a4c;
+}
+
+.back .value {
+  font-size: 1.5rem;
+}
+
 .option {
   display: flex;
   justify-content: center;
