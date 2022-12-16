@@ -19,7 +19,7 @@ export default function Home() {
   };
 
   const finishedTime = () => {
-    setQuestion(question.answerWith(-1));
+    if (!question.answered) setQuestion(question.answerWith(-1));
   };
 
   return (
@@ -31,7 +31,11 @@ export default function Home() {
         alignItems: "center",
       }}
     >
-      <Question value={question} onAnswer={onAnswer} finishedTime={finishedTime} />
+      <Question
+        value={question}
+        onAnswer={onAnswer}
+        finishedTime={finishedTime}
+      />
     </div>
   );
 }
