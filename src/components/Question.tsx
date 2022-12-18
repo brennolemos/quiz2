@@ -14,6 +14,7 @@ const options = [
 
 interface QuestionProps {
   value: QuestionModel;
+  questionDuration?: number;
   onAnswer: (index: number) => void;
   finishedTime: () => void;
 }
@@ -39,7 +40,7 @@ const Question = (props: QuestionProps) => {
   return (
     <div className={styles.question}>
       <Statement text={question.text} />
-      <Timer duration={10} finishedTime={props.finishedTime} />
+      <Timer duration={props.questionDuration ?? 10} finishedTime={props.finishedTime} />
       {renderAnswers()}
     </div>
   );

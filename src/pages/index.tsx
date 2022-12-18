@@ -33,6 +33,7 @@ export default function Home() {
     >
       <Question
         value={question}
+        questionDuration={5}
         onAnswer={onAnswer}
         finishedTime={finishedTime}
       />
