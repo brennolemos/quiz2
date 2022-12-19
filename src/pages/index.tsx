@@ -2,8 +2,7 @@ import { useState } from "react";
 
 import AnswerModel from "model/Answer";
 import QuestionModel from "model/Question";
-import Question from "components/Question";
-import Button from "components/Button";
+import Quiz from "components/Quiz";
 
 const mockQuestion = new QuestionModel(1, "Melhor cor?", [
   AnswerModel.incorrect("Green"),
@@ -15,13 +14,9 @@ const mockQuestion = new QuestionModel(1, "Melhor cor?", [
 export default function Home() {
   const [question, setQuestion] = useState(mockQuestion);
 
-  const onAnswer = (index: number) => {
-    setQuestion(question.answerWith(index));
-  };
+  const responseQuestion = (question: QuestionModel) => {};
 
-  const finishedTime = () => {
-    if (!question.answered) setQuestion(question.answerWith(-1));
-  };
+  const goToNext = () => {};
 
   return (
     <div
@@ -33,14 +28,12 @@ export default function Home() {
         alignItems: "center",
       }}
     >
-      <Question
-        value={question}
-        questionDuration={5}
-        onAnswer={onAnswer}
-        finishedTime={finishedTime}
+      <Quiz
+        question={question}
+        isLast={true}
+        responseQuestion={responseQuestion}
+        goToNext={goToNext}
       />
-
-      <Button text="Teste"/>
     </div>
   );
 }
