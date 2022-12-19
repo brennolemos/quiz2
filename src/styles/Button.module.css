@@ -9,4 +9,9 @@
   cursor: pointer;
   margin-top: 40px;
   display: inline-block;
+  transition: all .3s ease;
+}
+
+.button:hover {
+  transform: scale(1.1);
 }

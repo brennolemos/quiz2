@@ -28,6 +28,7 @@ export default function Home() {
       style={{
         display: "flex",
         height: "100vh",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
       }}
