@@ -16,6 +16,7 @@ const mockQuestion = new QuestionModel(1, "Melhor cor?", [
 export default function Home() {
   const [questionsIds, setQuestionsIds] = useState([]);
   const [question, setQuestion] = useState(mockQuestion);
+  const [correctQuestions, setCorrectQuestions] = useState(0);
 
   const loadQuestionsIds = async () => {
     const resp = await fetch(`${BASE_URL}/quiz`);
@@ -38,7 +39,13 @@ export default function Home() {
     questionsIds.length && loadQuestion(questionsIds[0]);
   }, [questionsIds]);
 
-  const responseQuestion = (question: QuestionModel) => {};
+  const responseQuestion = (question: QuestionModel) => {
+    setQuestion(question);
+    const correct = question.correct;
+    setCorrectQuestions(
+      (prevCorrectQuestions) => prevCorrectQuestions + (correct ? 1 : 0),
+    );
+  };
 
   const goToNext = () => {};
 
