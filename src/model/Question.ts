@@ -49,10 +49,10 @@ export default class QuestionModel {
     const answers = this.#answers.map((answer, i) => {
       const selectedAnswer = index === i;
       const shouldReveal = selectedAnswer || answer.correct;
-      return shouldReveal ? answer.reveal() : answer
+      return shouldReveal ? answer.reveal() : answer;
     });
 
-    return new QuestionModel(this.#id, this.#text, answers, isCorrect)
+    return new QuestionModel(this.#id, this.#text, answers, isCorrect);
   }
 
   shuffleAnswers() {
@@ -63,6 +63,11 @@ export default class QuestionModel {
       shuffledAnswers,
       this.#correct,
     );
+  }
+
+  static fromObject(obj: QuestionModel) {
+    const answers = obj.answers.map((answer) => AnswerModel.fromObject(answer));
+    return new QuestionModel(obj.id, obj.text, answers, obj.correct);
   }
 
   toObject() {
