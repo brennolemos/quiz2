@@ -1,21 +1,13 @@
 import { useEffect, useState } from "react";
 
-import AnswerModel from "model/Answer";
 import QuestionModel from "model/Question";
 import Quiz from "components/Quiz";
 
 const BASE_URL = "http://localhost:3000/api";
 
-const mockQuestion = new QuestionModel(1, "Melhor cor?", [
-  AnswerModel.incorrect("Green"),
-  AnswerModel.incorrect("Red"),
-  AnswerModel.incorrect("Blue"),
-  AnswerModel.correct("Black"),
-]);
-
 export default function Home() {
   const [questionsIds, setQuestionsIds] = useState([]);
-  const [question, setQuestion] = useState(mockQuestion);
+  const [question, setQuestion] = useState<QuestionModel>();
   const [correctQuestions, setCorrectQuestions] = useState(0);
 
   const loadQuestionsIds = async () => {
