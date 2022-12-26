@@ -47,14 +47,24 @@ export default function Home() {
     );
   };
 
-  const goToNext = () => {};
+  const getNextQuestionId = () => {
+    const nextId = questionsIds.indexOf(question?.id) + 1;
+    return questionsIds[nextId];
+  };
+
+  const goToNextQuestion = () => {
+    const nextId = getNextQuestionId();
+    nextId ? loadQuestion(nextId) : finishQuiz();
+  };
+
+  const finishQuiz = () => {};
 
   return (
     <Quiz
       question={question}
-      isLast={true}
+      isLast={getNextQuestionId() === undefined}
       responseQuestion={responseQuestion}
-      goToNext={goToNext}
+      goToNext={goToNextQuestion}
     />
   );
 }
