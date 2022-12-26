@@ -40,7 +40,7 @@ const Question = (props: QuestionProps) => {
   return (
     <div className={styles.question}>
       <Statement text={question.text} />
-      <Timer duration={props.questionDuration ?? 10} finishedTime={props.finishedTime} />
+      <Timer key={question.id} duration={props.questionDuration ?? 10} finishedTime={props.finishedTime} />
       {renderAnswers()}
     </div>
   );
