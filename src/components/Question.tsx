@@ -26,7 +26,7 @@ const Question = (props: QuestionProps) => {
     return question.answers.map((answer, i) => {
       return (
         <Answer
-          key={i}
+          key={`${question.id}-${i}`}
           value={answer}
           index={i}
           option={options[i].value}
