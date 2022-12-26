@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 
 import QuestionModel from "model/Question";
 import Quiz from "components/Quiz";
+import { useRouter } from "next/router";
 
 const BASE_URL = "http://localhost:3000/api";
 
 export default function Home() {
+  const router = useRouter();
+
   const [questionsIds, setQuestionsIds] = useState([]);
   const [question, setQuestion] = useState<QuestionModel>();
   const [correctQuestions, setCorrectQuestions] = useState(0);
@@ -40,8 +43,10 @@ export default function Home() {
   };
 
   const getNextQuestionId = () => {
-    const nextId = questionsIds.indexOf(question?.id) + 1;
-    return questionsIds[nextId];
+    if (question) {
+      const nextId = questionsIds.indexOf(question.id) + 1;
+      return questionsIds[nextId];
+    }
   };
 
   const goToNextQuestion = () => {
@@ -49,14 +54,24 @@ export default function Home() {
     nextId ? loadQuestion(nextId) : finishQuiz();
   };
 
-  const finishQuiz = () => {};
+  const finishQuiz = () => {
+    router.push({
+      pathname: "/result",
+      query: {
+        total: questionsIds.length,
+        correct: correctQuestions,
+      },
+    });
+  };
 
   return (
-    <Quiz
-      question={question}
-      isLast={getNextQuestionId() === undefined}
-      responseQuestion={responseQuestion}
-      goToNext={goToNextQuestion}
-    />
+    question && (
+      <Quiz
+        question={question}
+        isLast={getNextQuestionId() === undefined}
+        responseQuestion={responseQuestion}
+        goToNext={goToNextQuestion}
+      />
+    )
   );
 }
